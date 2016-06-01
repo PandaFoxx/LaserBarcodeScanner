@@ -28,6 +28,8 @@ import android.content.IntentFilter;
 
 import com.honeywell.decodemanager.DecodeManager;
 import com.honeywell.decodemanager.barcode.DecodeResult;
+import com.honeywell.decodemanager.SymbologyConfigs;
+import com.honeywell.decodemanager.symbologyconfig.*;
 
 public class LaserBarcodeScanner extends CordovaPlugin {
 
@@ -48,6 +50,19 @@ public class LaserBarcodeScanner extends CordovaPlugin {
 
 			if (decodeManager == null) {
 				decodeManager = new DecodeManager(((CordovaActivity)this.cordova.getActivity()), ScanResultHandler);
+				
+				SymbologyConfigs symConfigs = new SymbologyConfigs();
+				SymbologyConfigCodeEan13 symConfig = new SymbologyConfigCodeEan13();
+				
+				symConfig.enableCheckTransmit(true); 
+				symConfigs.addSymbologyConfig(symConfig);
+				
+				try {
+					decodeManager.setSymbologyConfigs(symConfigs);
+				}
+				catch(Exception e) {
+					e.printStackTrace();
+				}
 			}
 			try {
 				this.doScan();
