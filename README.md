@@ -3,6 +3,9 @@ Cordova Honeywell Laser Barcode Scanner Plugin
 
 Honeywell Dolphin 7800 Barcode Scanner plugin for Cordova / PhoneGap.
 
+Please take note that this is still in BETA phase and will have issues (see known issues below).
+
+
 ## Supported Platforms
 
 - Android
@@ -25,3 +28,8 @@ Honeywell Dolphin 7800 Barcode Scanner plugin for Cordova / PhoneGap.
 			console.log(err);
 		}
 	);
+
+	
+## Known Issues
+
+1. EAN 13 scan only returns the first 12 digits. (2016-06-01 work in progress)
