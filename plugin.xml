@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
 	id="com.letsap.plugins.honeywell.HoneywellScanner" 
-	version="0.0.1">
+	version="0.0.2">
 
 	<name>Honeywell Barcode Scanner</name>
 	<description>Honeywell laser barcode scanner plugin.</description>
