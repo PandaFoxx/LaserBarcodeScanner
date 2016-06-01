@@ -32,4 +32,4 @@ Please take note that this is still in BETA phase and will have issues (see know
 	
 ## Known Issues
 
-1. EAN 13 scan only returns the first 12 digits. (2016-06-01 work in progress)
+1. EAN 13 scan only returns the first 12 digits. (2016-06-01 Fixed)
