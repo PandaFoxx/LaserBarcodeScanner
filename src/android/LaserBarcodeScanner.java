@@ -50,19 +50,6 @@ public class LaserBarcodeScanner extends CordovaPlugin {
 
 			if (decodeManager == null) {
 				decodeManager = new DecodeManager(((CordovaActivity)this.cordova.getActivity()), ScanResultHandler);
-				
-				SymbologyConfigs symConfigs = new SymbologyConfigs();
-				SymbologyConfigCodeEan13 symConfig = new SymbologyConfigCodeEan13();
-				
-				symConfig.enableCheckTransmit(true); 
-				symConfigs.addSymbologyConfig(symConfig);
-				
-				try {
-					decodeManager.setSymbologyConfigs(symConfigs);
-				}
-				catch(Exception e) {
-					e.printStackTrace();
-				}
 			}
 			try {
 				this.doScan();
@@ -98,6 +85,13 @@ public class LaserBarcodeScanner extends CordovaPlugin {
 			case DecodeManager.MESSAGE_DECODER_READY: 
 				ArrayList<java.lang.Integer> arry = decodeManager.getSymConfigActivityOpeartor().getAllSymbologyId();
 				boolean b = arry.isEmpty();
+				
+				SymbologyConfigCodeEan13 ean13 = new SymbologyConfigCodeEan13();
+				ean13.enableSymbology(true);
+				ean13.enableCheckTransmit(true);
+				symconfig.addSymbologyConfig(ean13);
+				decodeManager.setSymbologyConfigs(symconfig);
+				
 				break;
 			default:
 				super.handleMessage(msg);
