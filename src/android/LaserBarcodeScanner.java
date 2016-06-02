@@ -61,9 +61,6 @@ public class LaserBarcodeScanner extends CordovaPlugin {
 		}
 		else if (action.equals("stop")) {
 			
-			if (decodeManager == null) {
-				decodeManager = new DecodeManager(((CordovaActivity)this.cordova.getActivity()), ScanResultHandler);
-			}
 			try {
 				this.stopScan();
 				return true;
