@@ -60,15 +60,15 @@ public class LaserBarcodeScanner extends CordovaPlugin {
 			}
 		}
 		else if (action.equals("stop")) {
-			
-			try {
-				this.stopScan();
-				return true;
-
-			} catch (Exception e) {
-				e.printStackTrace();
+			if (decodeManager != null) {
+				try {
+					this.stopScan();
+					return true;
+	
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-			
 			callbackContext.success("stopped");
 			return true;
 		}
