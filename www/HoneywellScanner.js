@@ -7,10 +7,6 @@ var HoneywellScannerPlugin = function() {
     exec(success_cb, error_cb, "LaserBarcodeScanner", "scan", []);
   };
 
-  this.stop = function(success_cb, error_cb){
-    exec(success_cb, error_cb, "LaserBarcodeScanner", "stop", []);
-  };
-
   this.startListen = function(success_cb, error_cb){
     exec(success_cb, error_cb, "LaserBarcodeScanner", "start", []);
   };
