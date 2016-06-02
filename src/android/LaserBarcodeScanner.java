@@ -60,6 +60,18 @@ public class LaserBarcodeScanner extends CordovaPlugin {
 			}
 		}
 		else if (action.equals("stop")) {
+			
+			if (decodeManager == null) {
+				decodeManager = new DecodeManager(((CordovaActivity)this.cordova.getActivity()), ScanResultHandler);
+			}
+			try {
+				this.stopScan();
+				return true;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			callbackContext.success("stopped");
 			return true;
 		}
@@ -108,6 +120,14 @@ public class LaserBarcodeScanner extends CordovaPlugin {
 	private void doScan() throws Exception {
 		try {
 			decodeManager.doDecode(SCANTIMEOUT);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void stopScan() throws Exception {
+		try {
+			decodeManager.cancelDecode();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
