@@ -51,9 +51,6 @@ public class LaserBarcodeScanner extends CordovaPlugin {
 			if (decodeManager == null) {
 				decodeManager = new DecodeManager(((CordovaActivity)this.cordova.getActivity()), ScanResultHandler);
 			}
-			SoundManager.getInstance();
-			SoundManager.initSounds(this.cordova.getActivity().getApplicationContext());
-			SoundManager.loadSounds();
 			try {
 				this.doScan();
 				return true;
@@ -82,10 +79,8 @@ public class LaserBarcodeScanner extends CordovaPlugin {
 				String r = decodeResult.barcodeData;
 				sendUpdate(getScannedInfo(r), false);
 				pluginCallbackContext.success("done");
-				SoundManager.playSound(1, 1);
 				break;
 			case DecodeManager.MESSAGE_DECODER_FAIL: 
-				SoundManager.playSound(2, 1);
 				break;
 			case DecodeManager.MESSAGE_DECODER_READY: 
 				ArrayList<java.lang.Integer> arry = decodeManager.getSymConfigActivityOpeartor().getAllSymbologyId();
@@ -125,7 +120,6 @@ public class LaserBarcodeScanner extends CordovaPlugin {
 	    } catch (JSONException e) {
 	      Log.e(LOG_TAG, e.getMessage(), e);
 	    }
-	    SoundManager.cleanup();
 	    return obj;
   	}
 
